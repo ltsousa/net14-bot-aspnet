@@ -7,21 +7,34 @@ using System.Web.Http.Description;
 using Microsoft.Bot.Connector;
 using SimpleBot.Logic;
 
+
+
 namespace SimpleBot
 {
     [BotAuthentication]
     public class MessagesController : ApiController
     {
+
         static SimpleBotUser g_bot = null;
+
 
         public MessagesController()
         {
+          //  conecta();
+
+
             // Pattern: singleton
             if (g_bot == null)
             {
                 g_bot = new SimpleBotUser();
             }
         }
+
+      /* public void conecta()
+        {
+           
+          }*/
+
 
         [ResponseType(typeof(void))]
         public virtual async Task<HttpResponseMessage> Post([FromBody] Activity activity)
